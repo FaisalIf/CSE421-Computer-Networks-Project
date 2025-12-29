@@ -1,0 +1,41 @@
+R-Kamrangirchar>en
+R-Kamrangirchar#conf t
+R-Kamrangirchar(config)#hostname R-Kamrangirchar
+
+R-Kamrangirchar(config)#int g0/0
+R-Kamrangirchar(config-if)# ip address 91.16.0.1 255.255.248.0
+R-Kamrangirchar(config-if)# no shut
+R-Kamrangirchar(config-if)# exit
+
+R-Kamrangirchar(config)#int s0/0/0
+R-Kamrangirchar(config-if)# ip address 91.16.16.142 255.255.255.252
+R-Kamrangirchar(config-if)# no shut
+R-Kamrangirchar(config-if)# exit
+
+R-Kamrangirchar(config)#ip route 91.16.12.0 255.255.254.0 Serial0/0/0
+R-Kamrangirchar(config)#ip route 91.16.16.0 255.255.255.128 Serial0/0/0
+R-Kamrangirchar(config)#ip route 91.16.8.0 255.255.252.0 Serial0/0/0
+R-Kamrangirchar(config)#ip route 91.16.14.0 255.255.255.0 Serial0/0/0
+R-Kamrangirchar(config)#ip route 91.16.15.0 255.255.255.0 Serial0/0/0
+R-Kamrangirchar(config)#ip route 91.16.16.128 255.255.255.252 Serial0/0/0
+R-Kamrangirchar(config)#ip route 91.16.16.132 255.255.255.252 Serial0/0/0
+R-Kamrangirchar(config)#ip route 91.16.16.136 255.255.255.252 Serial0/0/0
+R-Kamrangirchar(config)#ip route 91.16.16.144 255.255.255.252 Serial0/0/0
+R-Kamrangirchar(config)#ip route 91.16.16.148 255.255.255.252 Serial0/0/0
+R-Kamrangirchar(config)#end
+
+R-Kamrangirchar#copy run start
+
+
+
+
+! After debugging
+R-Kamrangirchar>en
+R-Kamrangirchar#conf t
+R-Kamrangirchar(config)#ip route 91.16.8.0 255.255.252.0 Serial0/2/0
+R-Kamrangirchar(config)#ip route 91.16.14.0 255.255.255.0 Serial0/2/0
+R-Kamrangirchar(config)#ip route 91.16.15.0 255.255.255.0 Serial0/2/0
+R-Kamrangirchar(config)#ip route 91.16.16.144 255.255.255.252 Serial0/2/0
+R-Kamrangirchar(config)#ip route 91.16.16.148 255.255.255.252 Serial0/2/0
+R-Kamrangirchar(config)#end
+R-Kamrangirchar#copy run start

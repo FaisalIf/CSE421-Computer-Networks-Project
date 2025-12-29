@@ -1,0 +1,45 @@
+R-Gulshan>en
+R-Gulshan#conf t
+R-Gulshan(config)#hostname R-Gulshan
+
+R-Gulshan(config)#int g0/0
+R-Gulshan(config-if)# ip address 91.16.12.1 255.255.254.0
+R-Gulshan(config-if)# no shut
+R-Gulshan(config-if)# exit
+
+R-Gulshan(config)#int s0/0/0
+R-Gulshan(config-if)# ip address 91.16.16.130 255.255.255.252
+R-Gulshan(config-if)# no shut
+R-Gulshan(config-if)# exit
+
+R-Gulshan(config)#int s0/0/1
+R-Gulshan(config-if)# ip address 91.16.16.141 255.255.255.252
+R-Gulshan(config-if)# clock rate 64000
+R-Gulshan(config-if)# no shut
+R-Gulshan(config-if)# exit
+
+R-Gulshan(config)#ip route 91.16.16.0 255.255.255.128 91.16.16.129
+R-Gulshan(config)#ip route 91.16.0.0 255.255.248.0 Serial0/0/1
+R-Gulshan(config)#ip route 91.16.8.0 255.255.252.0 91.16.16.129
+R-Gulshan(config)#ip route 91.16.14.0 255.255.255.0 91.16.16.129
+R-Gulshan(config)#ip route 91.16.15.0 255.255.255.0 91.16.16.129
+R-Gulshan(config)#ip route 91.16.16.132 255.255.255.252 91.16.16.129
+R-Gulshan(config)#ip route 91.16.16.136 255.255.255.252 91.16.16.129
+R-Gulshan(config)#ip route 91.16.16.144 255.255.255.252 91.16.16.129
+R-Gulshan(config)#ip route 91.16.16.148 255.255.255.252 91.16.16.129
+R-Gulshan(config)#end
+
+R-Gulshan#copy run start
+
+
+
+! After debugging
+R-Gulshan>en
+R-Gulshan#conf t
+R-Gulshan(config)#ip route 91.16.8.0 255.255.252.0 91.16.16.129
+R-Gulshan(config)#ip route 91.16.14.0 255.255.255.0 91.16.16.129
+R-Gulshan(config)#ip route 91.16.15.0 255.255.255.0 91.16.16.129
+R-Gulshan(config)#ip route 91.16.16.144 255.255.255.252 91.16.16.129
+R-Gulshan(config)#ip route 91.16.16.148 255.255.255.252 91.16.16.129
+R-Gulshan(config)#end
+R-Gulshan#copy run start

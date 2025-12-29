@@ -1,0 +1,32 @@
+R-Dhanmondi>en
+R-Dhanmondi#conf t
+R-Dhanmondi(config)#hostname R-Dhanmondi
+
+R-Dhanmondi(config)#int g0/0
+R-Dhanmondi(config-if)# ip address 91.16.14.1 255.255.255.0
+R-Dhanmondi(config-if)# ip helper-address 91.16.16.5
+R-Dhanmondi(config-if)# no shut
+R-Dhanmondi(config-if)# exit
+
+R-Dhanmondi(config)#int s0/0/0
+R-Dhanmondi(config-if)# ip address 91.16.16.146 255.255.255.252
+R-Dhanmondi(config-if)# no shut
+R-Dhanmondi(config-if)# exit
+
+R-Dhanmondi(config)#int s0/0/1
+R-Dhanmondi(config-if)# ip address 91.16.16.149 255.255.255.252
+R-Dhanmondi(config-if)# clock rate 64000
+R-Dhanmondi(config-if)# no shut
+R-Dhanmondi(config-if)# exit
+
+R-Dhanmondi(config)#router rip
+R-Dhanmondi(config-router)# version 2
+R-Dhanmondi(config-router)# no auto-summary
+R-Dhanmondi(config-router)# network 91.16.14.0
+R-Dhanmondi(config-router)# network 91.16.16.144
+R-Dhanmondi(config-router)# network 91.16.16.148
+R-Dhanmondi(config-router)# passive-interface GigabitEthernet0/0
+R-Dhanmondi(config-router)# exit
+R-Dhanmondi(config)#end
+
+R-Dhanmondi#copy run start

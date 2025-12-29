@@ -1,0 +1,25 @@
+R-Mirpur>en
+R-Mirpur#conf t
+R-Mirpur(config)#hostname R-Mirpur
+
+R-Mirpur(config)#interface g0/0
+R-Mirpur(config-if)# ip address 91.16.15.1 255.255.255.0
+R-Mirpur(config-if)# ip helper-address 91.16.16.5
+R-Mirpur(config-if)# no shut
+R-Mirpur(config-if)# exit
+
+R-Mirpur(config)#int s0/0/0
+R-Mirpur(config-if)# ip address 91.16.16.138 255.255.255.252
+R-Mirpur(config-if)# no shut
+R-Mirpur(config-if)# exit
+
+R-Mirpur(config)#router rip
+R-Mirpur(config-router)# version 2
+R-Mirpur(config-router)# no auto-summary
+R-Mirpur(config-router)# network 91.16.15.0
+R-Mirpur(config-router)# network 91.16.16.136
+R-Mirpur(config-router)# passive-interface GigabitEthernet0/0
+R-Mirpur(config-router)# exit
+R-Mirpur(config)#end
+
+R-Mirpur#copy run start

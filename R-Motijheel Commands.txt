@@ -1,0 +1,33 @@
+R-Motijheel>en
+R-Motijheel#conf t
+R-Motijheel(config)#hostname R-Motijheel
+
+R-Motijheel(config)#int g0/0
+R-Motijheel(config-if)# ip address 91.16.8.1 255.255.252.0
+R-Motijheel(config-if)# no shut
+R-Motijheel(config-if)# exit
+
+R-Motijheel(config)#interface s0/0/0
+R-Motijheel(config-if)# ip address 91.16.16.134 255.255.255.252
+R-Motijheel(config-if)# no shutdown
+R-Motijheel(config-if)# exit
+
+R-Motijheel(config)#int s0/0/1
+R-Motijheel(config-if)# ip address 91.16.16.145 255.255.255.252
+R-Motijheel(config-if)# clock rate 64000
+R-Motijheel(config-if)# no shut
+R-Motijheel(config-if)# exit
+
+R-Motijheel(config)#router rip
+R-Motijheel(config-router)# version 2
+R-Motijheel(config-router)# no auto-summary
+R-Motijheel(config-router)# network 91.16.8.0
+R-Motijheel(config-router)# network 91.16.16.132
+R-Motijheel(config-router)# network 91.16.16.144
+R-Motijheel(config-router)# passive-interface GigabitEthernet0/0
+R-Motijheel(config-router)# exit
+
+R-Motijheel(config)#ip route 91.16.16.0 255.255.255.128 91.16.16.146 130
+R-Motijheel(config)#end
+
+R-Motijheel#copy run start
